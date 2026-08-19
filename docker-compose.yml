@@ -77,10 +77,10 @@ services:
     restart: always
     command: --log-bin-trust-function-creators=1
     environment:
-      MYSQL_ROOT_PASSWORD: Qwert@1234
+      MYSQL_ROOT_PASSWORD: Password@12345
       MYSQL_DATABASE: magento
       MYSQL_USER: magento_user
-      MYSQL_PASSWORD: Qwert@1234
+      MYSQL_PASSWORD: Password@12345
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -118,7 +118,7 @@ services:
     restart: always
     volumes:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
-    command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--requirepass", "Qwert@1234"]
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--requirepass", "Password@12345"]
     networks:
       - app-network
 
@@ -128,7 +128,7 @@ services:
     restart: always
     environment:
       - PORT=8082
-      - REDIS_HOSTS=server:redis_server:6379:0:Qwert@1234,cache:redis_cache:6379:0:Qwert@1234,session:redis_session:6379:0:Qwert@1234
+      - REDIS_HOSTS=server:redis_server:6379:0:Password@12345,cache:redis_cache:6379:0:Password@12345,session:redis_session:6379:0:Qwert@1234
       - HTTP_USER=admin
       - HTTP_PASSWORD=Qwert@1234
       - URL_PREFIX=/redis-admin
